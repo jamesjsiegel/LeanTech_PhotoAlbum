@@ -10,6 +10,6 @@ namespace photo_album
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
-        public static string PhotoServiceUri { get; } = _config["photoServiceUrl"];
+        public static string PhotoServiceUrl { get; } = _config["photoServiceUrl"];
     }
 }
