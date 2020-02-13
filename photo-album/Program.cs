@@ -18,10 +18,10 @@ namespace photo_album
                 {
                     using (var client = new HttpClient())
                     {
-                        var repository = new PhotoRepository(client, AppSettings.PhotoServiceUrl);
-                        var service = new PhotoAlbumService(repository);
+                        var repository = new PhotoRepository(client);
+                        var service = new PhotoService(repository);
                         var album = service.GetAlbum(args[0]);
-                        ListPhotos(album);
+                        DisplayPhotos(album);
                     }
                 }
                 catch(Exception ex)
@@ -31,7 +31,7 @@ namespace photo_album
             }
         }
 
-        static void ListPhotos(Photo[] album)
+        static void DisplayPhotos(Photo[] album)
         {
             if(album.Length == 0)
             {

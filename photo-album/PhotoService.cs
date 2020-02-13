@@ -2,10 +2,10 @@
 
 namespace photo_album
 {
-    public class PhotoAlbumService
+    public class PhotoService
     {
         IPhotoRepository _albumRepository;
-        public PhotoAlbumService(IPhotoRepository albumRepository)
+        public PhotoService(IPhotoRepository albumRepository)
         {
             _albumRepository = albumRepository;
         }
