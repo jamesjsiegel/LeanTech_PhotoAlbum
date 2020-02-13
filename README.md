@@ -16,7 +16,7 @@ To build and run the program:
 		> cd bin\Debug\netcoreapp3.1
 
 	4. Run the application. Supply an album ID as an argument
-		> photo-album 1
+		> ./photo-album 1
 
 To build and run the unit tests:
 	1. Switch to the test project directory
