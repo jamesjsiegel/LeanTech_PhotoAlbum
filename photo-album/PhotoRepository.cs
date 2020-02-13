@@ -10,10 +10,10 @@ namespace photo_album
         private HttpClient _photoServiceClient;
         private string _photoServiceUrl;
 
-        public PhotoRepository(HttpClient serviceClient, string serviceUrl)
+        public PhotoRepository(HttpClient serviceClient)
         {
             _photoServiceClient = serviceClient;
-            _photoServiceUrl = serviceUrl;
+            _photoServiceUrl = AppSettings.PhotoServiceUrl;
         }
 
         public async Task<Photo[]> List(int albumId)
@@ -32,8 +32,12 @@ namespace photo_album
 
             if (response.IsSuccessStatusCode)
             {
+                var options = new JsonSerializerOptions() 
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                };
                 using var responseStream = await response.Content.ReadAsStreamAsync();
-                album = await JsonSerializer.DeserializeAsync<Photo[]>(responseStream);
+                album = await JsonSerializer.DeserializeAsync<Photo[]>(responseStream, options);
             }
             else
             {
